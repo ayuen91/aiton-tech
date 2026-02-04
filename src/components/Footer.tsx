@@ -33,8 +33,8 @@ const Footer = () => {
         <div className="max-w-4xl mx-auto">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-8 py-4 sm:py-8 border-t border-border/30">
             {/* Logo */}
-            <div className="font-display text-base sm:text-xl font-bold text-foreground">
-              Portfolio
+            <div className="font-display text-base sm:text-xl font-bold text-foreground tracking-wider">
+              AYUEN
             </div>
 
             {/* Social Links */}

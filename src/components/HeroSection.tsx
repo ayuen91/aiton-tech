@@ -12,6 +12,8 @@ const videoFrames: string[] = [
   // frame1, frame2, frame3, ...
 ];
 
+// Update hero content to use AYUEN branding
+
 const HeroSection = () => {
   return (
     <section
