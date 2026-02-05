@@ -4,11 +4,13 @@ interface ImageSequenceProps {
   frames: string[];
   fps?: number;
   className?: string;
+  pingPong?: boolean;
 }
 
-const ImageSequence = ({ frames, fps = 24, className = '' }: ImageSequenceProps) => {
+const ImageSequence = ({ frames, fps = 24, className = '', pingPong = false }: ImageSequenceProps) => {
   const [currentFrame, setCurrentFrame] = useState(0);
   const [loadedFrames, setLoadedFrames] = useState<string[]>([]);
+  const [direction, setDirection] = useState<1 | -1>(1);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   // Preload images
@@ -37,7 +39,20 @@ const ImageSequence = ({ frames, fps = 24, className = '' }: ImageSequenceProps)
     if (loadedFrames.length === 0) return;
 
     intervalRef.current = setInterval(() => {
-      setCurrentFrame((prev) => (prev + 1) % loadedFrames.length);
+      setCurrentFrame((prev) => {
+        if (pingPong) {
+          const nextFrame = prev + direction;
+          if (nextFrame >= loadedFrames.length - 1) {
+            setDirection(-1);
+            return loadedFrames.length - 1;
+          } else if (nextFrame <= 0) {
+            setDirection(1);
+            return 0;
+          }
+          return nextFrame;
+        }
+        return (prev + 1) % loadedFrames.length;
+      });
     }, 1000 / fps);
 
     return () => {
@@ -45,7 +60,7 @@ const ImageSequence = ({ frames, fps = 24, className = '' }: ImageSequenceProps)
         clearInterval(intervalRef.current);
       }
     };
-  }, [loadedFrames, fps]);
+  }, [loadedFrames, fps, pingPong, direction]);
 
   // Show placeholder if no frames loaded
   if (loadedFrames.length === 0) {
