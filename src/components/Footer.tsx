@@ -66,17 +66,18 @@ const Footer = () => {
                 <p className="text-foreground font-bold text-sm sm:text-lg group-hover:text-accent transition-colors">{info.value}</p>
               </motion.a>
             ))}
-            <motion.div variants={itemVariants} className="pt-4">
-              <Button
-                size="lg"
-                className="rounded-full px-10 py-8 gap-3 bg-foreground text-background hover:bg-foreground/90 font-extrabold text-lg transition-all hover:scale-105 active:scale-95 shadow-2xl shadow-foreground/20"
-                onClick={() => window.location.href = 'https://wa.me/211928400317'}
-              >
-                Get In Touch
-                <ArrowRight className="w-6 h-6 text-accent" />
-              </Button>
-            </motion.div>
+          </div>
 
+          <motion.div variants={itemVariants} className="pt-4">
+            <Button
+              size="lg"
+              className="rounded-full px-10 py-8 gap-3 bg-foreground text-background hover:bg-foreground/90 font-extrabold text-lg transition-all hover:scale-105 active:scale-95 shadow-2xl shadow-foreground/20"
+              onClick={() => window.location.href = 'https://wa.me/211928400317'}
+            >
+              Get In Touch
+              <ArrowRight className="w-6 h-6 text-accent" />
+            </Button>
+          </motion.div>
         </motion.div>
 
         {/* Footer Links */}

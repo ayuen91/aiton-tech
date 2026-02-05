@@ -1,0 +1,7 @@
+﻿
+C:\Users\ayuen\Documents\your-digital-story\src\components\AboutSection.tsx
+  28:91  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  35:76  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+Ô£û 2 problems (2 errors, 0 warnings)
+

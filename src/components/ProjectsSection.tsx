@@ -22,7 +22,7 @@ const projects = [
   },
   {
     number: '.03',
-    title: 'Sa Gwanda Footwear',
+    title: 'SA Gwanda Footwear',
     link: 'https://sagwanda.vercel.app',
     category: 'E-commerce',
     description: 'Nairobi-based footwear emporium. A robust e-commerce platform that has consistently delighted Kenyan customers with seamless footwear shopping experience.',
