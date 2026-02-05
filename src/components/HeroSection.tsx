@@ -4,8 +4,8 @@ import ImageSequence from './ImageSequence';
 import { Progress } from '@/components/ui/progress';
 import { useState, useEffect } from 'react';
 
-// Generate frame paths from public folder
-const videoFrames: string[] = Array.from({ length: 31 }, (_, i) => 
+// Frame sequence from public/frames directory
+const videoFrames: string[] = Array.from({ length: 31 }, (_, i) =>
   `/frames/ezgif-frame-${String(i + 1).padStart(3, '0')}.png`
 );
 
@@ -29,16 +29,16 @@ const HeroSection = () => {
     >
       {/* Circle Pattern Background */}
       <div className="absolute inset-0 circle-pattern opacity-60" />
-      
+
       {/* Gradient Overlay */}
       <div className="absolute inset-0 hero-gradient" />
 
       {/* Main Content */}
       <div className="relative z-10 container mx-auto px-3 sm:px-6">
-        <div className="glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-8 md:p-12 lg:p-16 max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-6 sm:gap-12 items-center">
+        <div className="glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-8 md:p-12 lg:p-16 max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-3 gap-6 sm:gap-12 items-center">
             {/* Left Content */}
-            <div className="space-y-3 sm:space-y-6 animate-fade-up">
+            <div className="space-y-3 sm:space-y-6 animate-fade-up lg:col-span-1">
               <span className="section-number text-xs sm:text-sm">.01</span>
               <h1 className="font-display text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-foreground">
                 Creative
@@ -70,13 +70,13 @@ const HeroSection = () => {
               </div>
             </div>
 
-            {/* Right Content - Image Sequence Video */}
-            <div className="relative h-[250px] sm:h-[400px] lg:h-[500px] flex items-center justify-center animate-fade-up" style={{ animationDelay: '0.2s' }}>
+            {/* Right Content - Image Sequence Video (Larger) */}
+            <div className="relative h-[300px] sm:h-[500px] lg:h-[600px] flex items-center justify-center animate-fade-up lg:col-span-2" style={{ animationDelay: '0.2s' }}>
               <div className="relative w-full h-full flex items-center justify-center">
                 {/* Decorative elements */}
-                <div className="absolute w-40 sm:w-64 h-40 sm:h-64 rounded-full bg-primary/10 blur-3xl animate-float" />
-                <div className="absolute w-32 sm:w-48 h-32 sm:h-48 rounded-full bg-accent/20 blur-2xl animate-float-delayed" />
-                
+                <div className="absolute w-48 sm:w-80 h-48 sm:h-80 rounded-full bg-primary/20 blur-3xl animate-float" />
+                <div className="absolute w-40 sm:w-64 h-40 sm:h-64 rounded-full bg-accent/30 blur-2xl animate-float-delayed" />
+
                 {/* Main content container with progress and frames */}
                 <div className="relative z-10 flex flex-col items-center gap-3 sm:gap-4">
                   {/* Progress Bar Box */}
@@ -86,7 +86,7 @@ const HeroSection = () => {
                       <span className="font-display text-lg sm:text-2xl font-bold text-foreground">{progress}%</span>
                     </div>
                     <div className="relative h-2 sm:h-3 w-full bg-white/40 rounded-full overflow-hidden">
-                      <div 
+                      <div
                         className="h-full bg-white rounded-full transition-all duration-1000 ease-out shadow-[0_0_10px_rgba(255,255,255,0.5)]"
                         style={{ width: `${progress}%` }}
                       />
@@ -94,20 +94,20 @@ const HeroSection = () => {
                   </div>
 
                   {/* Image Sequence Container */}
-                  <div className="w-full max-w-[280px] sm:max-w-[400px] aspect-square glass-heavy rounded-2xl sm:rounded-3xl overflow-hidden">
-                    <ImageSequence 
-                      frames={videoFrames} 
-                      fps={12} 
+                  <div className="w-full max-w-[280px] sm:max-w-[400px] aspect-square glass-heavy rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl">
+                    <ImageSequence
+                      frames={videoFrames}
+                      fps={12}
                       pingPong={true}
                       className="w-full h-full"
                     />
                   </div>
                 </div>
-
-                {/* Floating accent elements */}
-                <div className="absolute top-4 sm:top-10 right-4 sm:right-10 w-12 sm:w-20 h-12 sm:h-20 glass-frosted rounded-xl sm:rounded-2xl rotate-12 animate-float-delayed" />
-                <div className="absolute bottom-10 sm:bottom-20 left-2 sm:left-5 w-10 sm:w-16 h-10 sm:h-16 glass-frosted rounded-lg sm:rounded-xl -rotate-6 animate-float" />
               </div>
+
+              {/* Floating accent elements */}
+              <div className="absolute top-4 sm:top-10 right-4 sm:right-10 w-12 sm:w-20 h-12 sm:h-20 glass-frosted rounded-xl sm:rounded-2xl rotate-12 animate-float-delayed" />
+              <div className="absolute bottom-10 sm:bottom-20 left-2 sm:left-5 w-10 sm:w-16 h-10 sm:h-16 glass-frosted rounded-lg sm:rounded-xl -rotate-6 animate-float" />
             </div>
           </div>
 
