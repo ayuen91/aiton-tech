@@ -45,12 +45,12 @@ const ServicesSection = () => {
           {services.map((service, index) => (
             <div
               key={service.title}
-              className="glass-card rounded-xl sm:rounded-2xl p-3 sm:p-8 group hover:scale-[1.02] transition-all duration-300 animate-fade-up"
+              className="glass-frosted rounded-xl sm:rounded-2xl p-3 sm:p-8 group hover:scale-[1.02] transition-all duration-300 animate-fade-up"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               {/* Icon */}
-              <div className="w-8 sm:w-14 h-8 sm:h-14 rounded-lg sm:rounded-xl bg-primary/10 flex items-center justify-center mb-3 sm:mb-6 group-hover:bg-primary/20 transition-colors">
-                <service.icon className="w-4 sm:w-7 h-4 sm:h-7 text-primary" />
+              <div className="w-8 sm:w-14 h-8 sm:h-14 rounded-lg sm:rounded-xl glass-icon flex items-center justify-center mb-3 sm:mb-6 group-hover:bg-primary/20 transition-colors">
+                <service.icon className="w-4 sm:w-7 h-4 sm:h-7 text-accent" />
               </div>
 
               {/* Number */}

@@ -100,25 +100,22 @@ const Navbar = () => {
             }}
           >
             {/* Main glass pill */}
-            <div className="absolute inset-0 rounded-lg overflow-hidden">
+            <div className="absolute inset-0 rounded-lg overflow-hidden glass-active">
               {/* Refraction/magnifying glass effect layers */}
-              <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-white/20 to-transparent backdrop-blur-sm" />
-              <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-accent/10" />
-              
-              {/* Glass edge highlights */}
-              <div className="absolute inset-0 rounded-lg border border-white/50 shadow-[inset_0_1px_1px_rgba(255,255,255,0.6),inset_0_-1px_1px_rgba(0,0,0,0.05)]" />
+              <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-white/10 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 via-transparent to-accent/5" />
               
               {/* Lens distortion effect */}
-              <div className="absolute inset-[2px] rounded-md bg-gradient-to-b from-white/30 to-transparent" style={{ height: '50%' }} />
+              <div className="absolute inset-[2px] rounded-md bg-gradient-to-b from-white/40 to-transparent" style={{ height: '40%' }} />
               
               {/* Chromatic aberration simulation */}
-              <div className="absolute inset-0 rounded-lg mix-blend-overlay opacity-30">
+              <div className="absolute inset-0 rounded-lg mix-blend-overlay opacity-20">
                 <div className="absolute inset-0 bg-gradient-to-r from-cyan-200/30 via-transparent to-rose-200/30" />
               </div>
             </div>
             
             {/* Outer glow */}
-            <div className="absolute -inset-1 rounded-xl bg-primary/5 blur-md -z-10" />
+            <div className="absolute -inset-1 rounded-xl bg-primary/10 blur-md -z-10" />
           </div>
 
           {navLinks.map((link) => {

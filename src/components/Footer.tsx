@@ -12,7 +12,7 @@ const Footer = () => {
 
       <div className="relative z-10 container mx-auto px-3 sm:px-6">
         {/* CTA Section */}
-        <div className="glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-8 md:p-12 lg:p-16 max-w-4xl mx-auto text-center mb-8 sm:mb-16 animate-fade-up">
+        <div className="glass-heavy rounded-2xl sm:rounded-3xl p-4 sm:p-8 md:p-12 lg:p-16 max-w-4xl mx-auto text-center mb-8 sm:mb-16 animate-fade-up">
           <span className="section-number block mb-2 sm:mb-4 text-xs sm:text-sm">.05</span>
           <h2 className="font-display text-2xl sm:text-4xl md:text-5xl font-bold text-foreground mb-2 sm:mb-4">
             Let's Work Together
@@ -41,31 +41,31 @@ const Footer = () => {
             <div className="flex items-center gap-2 sm:gap-4">
               <a
                 href="#"
-                className="w-8 sm:w-10 h-8 sm:h-10 rounded-full bg-secondary/50 flex items-center justify-center hover:bg-secondary transition-colors"
+                className="w-8 sm:w-10 h-8 sm:h-10 rounded-full glass-icon flex items-center justify-center hover:bg-accent/20 transition-colors"
                 aria-label="GitHub"
               >
-                <Github className="w-4 sm:w-5 h-4 sm:h-5 text-foreground" />
+                <Github className="w-4 sm:w-5 h-4 sm:h-5 text-accent" />
               </a>
               <a
                 href="#"
-                className="w-8 sm:w-10 h-8 sm:h-10 rounded-full bg-secondary/50 flex items-center justify-center hover:bg-secondary transition-colors"
+                className="w-8 sm:w-10 h-8 sm:h-10 rounded-full glass-icon flex items-center justify-center hover:bg-accent/20 transition-colors"
                 aria-label="LinkedIn"
               >
-                <Linkedin className="w-4 sm:w-5 h-4 sm:h-5 text-foreground" />
+                <Linkedin className="w-4 sm:w-5 h-4 sm:h-5 text-accent" />
               </a>
               <a
                 href="#"
-                className="w-8 sm:w-10 h-8 sm:h-10 rounded-full bg-secondary/50 flex items-center justify-center hover:bg-secondary transition-colors"
+                className="w-8 sm:w-10 h-8 sm:h-10 rounded-full glass-icon flex items-center justify-center hover:bg-accent/20 transition-colors"
                 aria-label="Twitter"
               >
-                <Twitter className="w-4 sm:w-5 h-4 sm:h-5 text-foreground" />
+                <Twitter className="w-4 sm:w-5 h-4 sm:h-5 text-accent" />
               </a>
               <a
                 href="#"
-                className="w-8 sm:w-10 h-8 sm:h-10 rounded-full bg-secondary/50 flex items-center justify-center hover:bg-secondary transition-colors"
+                className="w-8 sm:w-10 h-8 sm:h-10 rounded-full glass-icon flex items-center justify-center hover:bg-accent/20 transition-colors"
                 aria-label="Email"
               >
-                <Mail className="w-4 sm:w-5 h-4 sm:h-5 text-foreground" />
+                <Mail className="w-4 sm:w-5 h-4 sm:h-5 text-accent" />
               </a>
             </div>
 

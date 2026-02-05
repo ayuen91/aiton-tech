@@ -1,20 +1,27 @@
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import ImageSequence from './ImageSequence';
+import { Progress } from '@/components/ui/progress';
+import { useState, useEffect } from 'react';
 
-// Add your PNG frame imports here
-// import frame1 from '@/assets/frames/frame001.png';
-// import frame2 from '@/assets/frames/frame002.png';
-// etc.
-
-// Example: Replace this empty array with your actual frame imports
-const videoFrames: string[] = [
-  // frame1, frame2, frame3, ...
-];
+// Generate frame paths from public folder
+const videoFrames: string[] = Array.from({ length: 31 }, (_, i) => 
+  `/frames/ezgif-frame-${String(i + 1).padStart(3, '0')}.png`
+);
 
 // Update hero content to use AYUEN branding
 
 const HeroSection = () => {
+  const [progress, setProgress] = useState(0);
+
+  // Animate progress to 83%
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setProgress(83);
+    }, 500);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <section
       id="home"
@@ -67,34 +74,39 @@ const HeroSection = () => {
             <div className="relative h-[250px] sm:h-[400px] lg:h-[500px] flex items-center justify-center animate-fade-up" style={{ animationDelay: '0.2s' }}>
               <div className="relative w-full h-full flex items-center justify-center">
                 {/* Decorative elements */}
-                <div className="absolute w-40 sm:w-64 h-40 sm:h-64 rounded-full bg-primary/20 blur-3xl animate-float" />
-                <div className="absolute w-32 sm:w-48 h-32 sm:h-48 rounded-full bg-accent/30 blur-2xl animate-float-delayed" />
+                <div className="absolute w-40 sm:w-64 h-40 sm:h-64 rounded-full bg-primary/10 blur-3xl animate-float" />
+                <div className="absolute w-32 sm:w-48 h-32 sm:h-48 rounded-full bg-accent/20 blur-2xl animate-float-delayed" />
                 
-                {/* Image Sequence Container */}
-                <div className="relative z-10 w-full max-w-[280px] sm:max-w-[400px] aspect-square">
-                  {videoFrames.length > 0 ? (
+                {/* Main content container with progress and frames */}
+                <div className="relative z-10 flex flex-col items-center gap-3 sm:gap-4">
+                  {/* Progress Bar Box */}
+                  <div className="glass-progress-box rounded-xl sm:rounded-2xl px-4 sm:px-6 py-3 sm:py-4 w-full max-w-[280px] sm:max-w-[400px]">
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-xs sm:text-sm font-medium text-foreground/80">Progress</span>
+                      <span className="font-display text-lg sm:text-2xl font-bold text-foreground">{progress}%</span>
+                    </div>
+                    <div className="relative h-2 sm:h-3 w-full bg-white/40 rounded-full overflow-hidden">
+                      <div 
+                        className="h-full bg-white rounded-full transition-all duration-1000 ease-out shadow-[0_0_10px_rgba(255,255,255,0.5)]"
+                        style={{ width: `${progress}%` }}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Image Sequence Container */}
+                  <div className="w-full max-w-[280px] sm:max-w-[400px] aspect-square glass-heavy rounded-2xl sm:rounded-3xl overflow-hidden">
                     <ImageSequence 
                       frames={videoFrames} 
-                      fps={24} 
-                      className="w-full h-full rounded-2xl sm:rounded-3xl overflow-hidden"
+                      fps={12} 
+                      pingPong={true}
+                      className="w-full h-full"
                     />
-                  ) : (
-                    /* Placeholder when no frames */
-                    <div className="w-full h-full glass-card rounded-2xl sm:rounded-3xl flex items-center justify-center animate-float">
-                      <div className="text-center p-4">
-                        <div className="font-display text-3xl sm:text-5xl font-bold text-primary">83%</div>
-                        <div className="w-12 sm:w-16 h-12 sm:h-16 mx-auto mt-3 sm:mt-4 rounded-full border-4 border-primary border-t-transparent animate-spin" style={{ animationDuration: '3s' }} />
-                        <p className="text-xs sm:text-sm text-muted-foreground mt-3 sm:mt-4 max-w-[120px] sm:max-w-[150px] mx-auto">
-                          Add your PNG frames
-                        </p>
-                      </div>
-                    </div>
-                  )}
+                  </div>
                 </div>
 
                 {/* Floating accent elements */}
-                <div className="absolute top-4 sm:top-10 right-4 sm:right-10 w-12 sm:w-20 h-12 sm:h-20 glass-card rounded-xl sm:rounded-2xl rotate-12 animate-float-delayed" />
-                <div className="absolute bottom-10 sm:bottom-20 left-2 sm:left-5 w-10 sm:w-16 h-10 sm:h-16 glass-card rounded-lg sm:rounded-xl -rotate-6 animate-float" />
+                <div className="absolute top-4 sm:top-10 right-4 sm:right-10 w-12 sm:w-20 h-12 sm:h-20 glass-frosted rounded-xl sm:rounded-2xl rotate-12 animate-float-delayed" />
+                <div className="absolute bottom-10 sm:bottom-20 left-2 sm:left-5 w-10 sm:w-16 h-10 sm:h-16 glass-frosted rounded-lg sm:rounded-xl -rotate-6 animate-float" />
               </div>
             </div>
           </div>
