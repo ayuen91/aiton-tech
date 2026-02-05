@@ -1,8 +1,38 @@
-import { ArrowRight, Github, Linkedin, Mail, Twitter } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ArrowRight, Github, Linkedin, Mail, Twitter, Instagram, Facebook } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+
+  const containerVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 10 },
+    visible: { opacity: 1, y: 0 },
+  };
+
+  const socialLinks = [
+    { icon: Github, label: 'GitHub', href: 'https://github.com/ayuen91' },
+    { icon: Twitter, label: 'X', href: 'https://twitter.com/realayuen' },
+    { icon: Facebook, label: 'Facebook', href: 'https://www.facebook.com/ko11onel/' },
+    { icon: Instagram, label: 'Instagram', href: 'https://www.instagram.com/ko11onel/' },
+  ];
+
+  const contactInfo = [
+    { label: 'WhatsApp', value: '+211 928 400 317', href: 'https://wa.me/211928400317' },
+    { label: 'Email', value: 'ayuenito@gmail.com', href: 'mailto:ayuenito@gmail.com' }
+  ];
 
   return (
     <footer id="contact" className="relative py-12 sm:py-24 overflow-hidden">
@@ -12,69 +42,87 @@ const Footer = () => {
 
       <div className="relative z-10 container mx-auto px-3 sm:px-6">
         {/* CTA Section */}
-        <div className="glass-heavy rounded-2xl sm:rounded-3xl p-4 sm:p-8 md:p-12 lg:p-16 max-w-4xl mx-auto text-center mb-8 sm:mb-16 animate-fade-up">
-          <span className="section-number block mb-2 sm:mb-4 text-xs sm:text-sm">.05</span>
-          <h2 className="font-display text-2xl sm:text-4xl md:text-5xl font-bold text-foreground mb-2 sm:mb-4">
-            Let's Work Together
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={containerVariants}
+          className="glass-heavy rounded-2xl sm:rounded-3xl p-6 sm:p-12 md:p-16 lg:p-20 max-w-5xl mx-auto text-center mb-8 sm:mb-16 shadow-2xl border border-white/10"
+        >
+          <motion.span variants={itemVariants} className="section-number block mb-4 sm:mb-6 text-xs sm:text-sm font-bold tracking-[0.3em] text-accent">.05 GET IN TOUCH</motion.span>
+          <h2 className="font-display text-3xl sm:text-5xl md:text-6xl font-extrabold text-foreground mb-6 sm:mb-10">
+            Let's Build the <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent italic font-serif">Future</span> Together
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto text-sm sm:text-lg mb-4 sm:mb-8">
-            Have a project in mind? Let's create something amazing.
-          </p>
-          <Button
-            size="sm"
-            className="rounded-full px-4 sm:px-8 py-2 sm:py-6 gap-1 sm:gap-2 bg-foreground text-background hover:bg-foreground/90 font-medium text-xs sm:text-sm"
-          >
-            Get In Touch
-            <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4" />
-          </Button>
-        </div>
+
+          <div className="grid sm:grid-cols-2 gap-6 mb-10 sm:mb-16 max-w-2xl mx-auto">
+            {contactInfo.map((info) => (
+              <motion.a
+                key={info.label}
+                href={info.href}
+                whileHover={{ scale: 1.02, y: -5 }}
+                className="glass-frosted p-6 rounded-2xl border border-white/5 group hover:border-accent/30 transition-all text-center"
+              >
+                <p className="text-[10px] font-bold text-accent uppercase tracking-widest mb-2">{info.label}</p>
+                <p className="text-foreground font-bold text-sm sm:text-lg group-hover:text-accent transition-colors">{info.value}</p>
+              </motion.a>
+            ))}
+            <motion.div variants={itemVariants} className="pt-4">
+              <Button
+                size="lg"
+                className="rounded-full px-10 py-8 gap-3 bg-foreground text-background hover:bg-foreground/90 font-extrabold text-lg transition-all hover:scale-105 active:scale-95 shadow-2xl shadow-foreground/20"
+                onClick={() => window.location.href = 'https://wa.me/211928400317'}
+              >
+                Get In Touch
+                <ArrowRight className="w-6 h-6 text-accent" />
+              </Button>
+            </motion.div>
+
+        </motion.div>
 
         {/* Footer Links */}
-        <div className="max-w-4xl mx-auto">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-8 py-4 sm:py-8 border-t border-border/30">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5 }}
+          className="max-w-5xl mx-auto"
+        >
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-6 py-10 border-t border-white/5">
             {/* Logo */}
-            <div className="font-display text-base sm:text-xl font-bold text-foreground tracking-wider">
-              AYUEN
-            </div>
+            <motion.div
+              whileHover={{ scale: 1.1, color: "var(--accent)" }}
+              className="font-display text-4xl sm:text-6xl font-black text-foreground tracking-tighter cursor-pointer transition-colors"
+            >
+              AITON<span className="text-accent">TECH</span>
+            </motion.div>
 
-            {/* Social Links */}
-            <div className="flex items-center gap-2 sm:gap-4">
-              <a
-                href="#"
-                className="w-8 sm:w-10 h-8 sm:h-10 rounded-full glass-icon flex items-center justify-center hover:bg-accent/20 transition-colors"
-                aria-label="GitHub"
-              >
-                <Github className="w-4 sm:w-5 h-4 sm:h-5 text-accent" />
-              </a>
-              <a
-                href="#"
-                className="w-8 sm:w-10 h-8 sm:h-10 rounded-full glass-icon flex items-center justify-center hover:bg-accent/20 transition-colors"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="w-4 sm:w-5 h-4 sm:h-5 text-accent" />
-              </a>
-              <a
-                href="#"
-                className="w-8 sm:w-10 h-8 sm:h-10 rounded-full glass-icon flex items-center justify-center hover:bg-accent/20 transition-colors"
-                aria-label="Twitter"
-              >
-                <Twitter className="w-4 sm:w-5 h-4 sm:h-5 text-accent" />
-              </a>
-              <a
-                href="#"
-                className="w-8 sm:w-10 h-8 sm:h-10 rounded-full glass-icon flex items-center justify-center hover:bg-accent/20 transition-colors"
-                aria-label="Email"
-              >
-                <Mail className="w-4 sm:w-5 h-4 sm:h-5 text-accent" />
-              </a>
+            {/* Social Links Icons Only */}
+            <div className="flex items-center gap-4">
+              {socialLinks.map((item, i) => (
+                <motion.a
+                  key={item.label}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  initial={{ opacity: 0, scale: 0 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  whileHover={{ y: -5, backgroundColor: "rgba(255, 255, 255, 0.15)" }}
+                  className="w-12 h-12 rounded-full glass-icon flex items-center justify-center transition-all shadow-xl"
+                  aria-label={item.label}
+                >
+                  <item.icon className="w-5 h-5 text-accent" />
+                </motion.a>
+              ))}
             </div>
 
             {/* Copyright */}
-            <div className="text-xs sm:text-sm text-muted-foreground">
-              © {currentYear} All rights reserved.
+            <div className="text-[10px] sm:text-xs font-bold text-muted-foreground uppercase tracking-widest text-center">
+              © {currentYear} AITON TECH. ALL RIGHTS RESERVED.
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </footer>
   );

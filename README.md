@@ -1,73 +1,58 @@
-# Welcome to your Lovable project
+# AITON TECH - Innovative Digital Solutions
 
-## Project info
+A premier, design-driven agency specializing in fullstack development, DevOps, and AI-powered solutions. Led by CEO **Ayuen Mamer Agoot**, Aiton Tech transforms complex ideas into immersive digital experiences.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+[Live Site](https://aiton-tech.vercel.app) | [WhatsApp](https://wa.me/211928400317) | [Email](mailto:ayuenito@gmail.com)
 
-## How can I edit this code?
+## ✨ Core Features
 
-There are several ways of editing your application.
+- **Dynamic Hero Experience**: Full-screen video/image sequence background with a circular 84% innovation progress indicator.
+- **Advanced Services Grid**: Interactive 3D tilt-cards showcasing Fullstack Systems, AI Data Intelligence, and Digital Experiences.
+- **Elite Portfolio**: Case studies for global clients like Jahir Trade Guide, Selector Kuoi Awan, and Sa Gwanda Footwear.
+- **Glassmorphic UI/UX**: Ultra-premium glass effects, backdrop blurs, and sophisticated refraction layering.
+- **Physics-Based Animations**: Fluid, physics-inspired transitions powered by `framer-motion`.
+- **Responsive Architecture**: Seamlessly optimized for mobile, tablet, and high-resolution desktop displays.
 
-**Use Lovable**
+## 🛠️ Tech Stack
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+- **Framework**: [React](https://reactjs.org/) (Vite)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Components**: [shadcn/ui](https://ui.shadcn.com/)
+- **Types**: [TypeScript](https://www.typescriptlang.org/)
 
-Changes made via Lovable will be committed automatically to this repo.
+## 📈 SEO & Social Presence
 
-**Use your preferred IDE**
+This platform is optimized for performance and discoverability:
+- **Canonical URLs**: Ensuring search engine authority.
+- **Open Graph**: Optimized social previews for X (Twitter), Facebook, and LinkedIn.
+- **Performance**: High Lighthouse scores for Core Web Vitals.
+- **Keywords**: Fullstack Development, DevOps, AI Solutions, South Sudan Tech, Nairobi Web Agency.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## 🚀 Getting Started
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Prerequisites
+- Node.js (v18 or higher)
+- npm
 
-Follow these steps:
+### Installation
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/ayuen91/your-digital-story.git
+   ```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+2. Install dependencies:
+   ```sh
+   npm install
+   ```
 
-# Step 3: Install the necessary dependencies.
-npm i
+3. Start development server:
+   ```sh
+   npm run dev
+   ```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+## 📄 License
 
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+© 2026 AITON TECH. All rights reserved. Registered trademark of Ayuen Mamer Agoot.

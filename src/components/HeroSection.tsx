@@ -14,119 +14,147 @@ const videoFrames: string[] = Array.from({ length: 31 }, (_, i) =>
 const HeroSection = () => {
   const [progress, setProgress] = useState(0);
 
-  // Animate progress to 83%
+  // Animate progress to 84%
   useEffect(() => {
     const timer = setTimeout(() => {
-      setProgress(83);
+      setProgress(84);
     }, 500);
     return () => clearTimeout(timer);
   }, []);
 
+  // Calculate circular stroke
+  const radius = 45;
+  const circumference = 2 * Math.PI * radius;
+  const strokeDashoffset = circumference - (progress / 100) * circumference;
+
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 sm:pt-24"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Circle Pattern Background */}
-      <div className="absolute inset-0 circle-pattern opacity-60" />
-
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 hero-gradient" />
+      {/* Full-screen Background Image Sequence */}
+      <div className="absolute inset-0 z-0">
+        <ImageSequence
+          frames={videoFrames}
+          fps={12}
+          pingPong={true}
+          className="w-full h-full object-cover opacity-40 scale-105"
+        />
+        {/* Overlays for better readability and aesthetic */}
+        <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/10 to-background" />
+        <div className="absolute inset-0 bg-background/30 backdrop-blur-[2px]" />
+        <div className="absolute inset-0 circle-pattern opacity-40" />
+      </div>
 
       {/* Main Content */}
-      <div className="relative z-10 container mx-auto px-3 sm:px-6">
-        <div className="glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-8 md:p-12 lg:p-16 max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-3 gap-6 sm:gap-12 items-center">
-            {/* Left Content */}
-            <div className="space-y-3 sm:space-y-6 animate-fade-up lg:col-span-1">
-              <span className="section-number text-xs sm:text-sm">.01</span>
-              <h1 className="font-display text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-foreground">
-                Creative
-                <br />
-                <span className="text-gradient">Developer &</span>
-                <br />
-                Designer
-              </h1>
-              <p className="text-muted-foreground text-sm sm:text-lg max-w-md leading-relaxed">
-                Crafting digital experiences that blend innovation with elegant design.
-              </p>
-              <div className="flex flex-wrap gap-2 sm:gap-4 pt-2 sm:pt-4">
-                <Button
-                  size="sm"
-                  className="rounded-full px-4 sm:px-8 py-2 sm:py-6 gap-1 sm:gap-2 bg-foreground text-background hover:bg-foreground/90 font-medium text-xs sm:text-sm"
-                  onClick={() => document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' })}
-                >
-                  View Projects
-                  <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4" />
-                </Button>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="rounded-full px-4 sm:px-8 py-2 sm:py-6 border-border hover:bg-secondary/50 text-xs sm:text-sm"
-                  onClick={() => document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' })}
-                >
-                  Learn More
-                </Button>
-              </div>
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 py-20 sm:py-32">
+        <div className="grid lg:grid-cols-12 gap-12 items-center max-w-7xl mx-auto">
+          {/* Left Content */}
+          <div className="lg:col-span-7 space-y-6 sm:space-y-8 animate-fade-up">
+            <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full glass-frosted border border-white/10">
+              <span className="section-number text-xs font-bold text-accent">.01</span>
+              <span className="text-[10px] sm:text-xs font-medium uppercase tracking-widest text-foreground/70">Welcome to Aiton Tech</span>
             </div>
 
-            {/* Right Content - Image Sequence Video (Larger) */}
-            <div className="relative h-[300px] sm:h-[500px] lg:h-[600px] flex items-center justify-center animate-fade-up lg:col-span-2" style={{ animationDelay: '0.2s' }}>
-              <div className="relative w-full h-full flex items-center justify-center">
-                {/* Decorative elements */}
-                <div className="absolute w-48 sm:w-80 h-48 sm:h-80 rounded-full bg-primary/20 blur-3xl animate-float" />
-                <div className="absolute w-40 sm:w-64 h-40 sm:h-64 rounded-full bg-accent/30 blur-2xl animate-float-delayed" />
+            <h1 className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-[1.1] text-foreground tracking-tight">
+              Design <span className="text-gradient">Driven</span>
+              <br />
+              Innovation
+            </h1>
 
-                {/* Main content container with progress and frames */}
-                <div className="relative z-10 flex flex-col items-center gap-3 sm:gap-4">
-                  {/* Progress Bar Box */}
-                  <div className="glass-progress-box rounded-xl sm:rounded-2xl px-4 sm:px-6 py-3 sm:py-4 w-full max-w-[280px] sm:max-w-[400px]">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-xs sm:text-sm font-medium text-foreground/80">Progress</span>
-                      <span className="font-display text-lg sm:text-2xl font-bold text-foreground">{progress}%</span>
-                    </div>
-                    <div className="relative h-2 sm:h-3 w-full bg-white/40 rounded-full overflow-hidden">
-                      <div
-                        className="h-full bg-white rounded-full transition-all duration-1000 ease-out shadow-[0_0_10px_rgba(255,255,255,0.5)]"
-                        style={{ width: `${progress}%` }}
-                      />
-                    </div>
-                  </div>
+            <p className="text-muted-foreground text-base sm:text-xl max-w-xl leading-relaxed">
+              We weave digital narratives through cutting-edge code and visionary design. Transforming ideas into immersive web experiences.
+            </p>
 
-                  {/* Image Sequence Container */}
-                  <div className="w-full max-w-[280px] sm:max-w-[400px] aspect-square glass-heavy rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl">
-                    <ImageSequence
-                      frames={videoFrames}
-                      fps={12}
-                      pingPong={true}
-                      className="w-full h-full"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              {/* Floating accent elements */}
-              <div className="absolute top-4 sm:top-10 right-4 sm:right-10 w-12 sm:w-20 h-12 sm:h-20 glass-frosted rounded-xl sm:rounded-2xl rotate-12 animate-float-delayed" />
-              <div className="absolute bottom-10 sm:bottom-20 left-2 sm:left-5 w-10 sm:w-16 h-10 sm:h-16 glass-frosted rounded-lg sm:rounded-xl -rotate-6 animate-float" />
+            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              <Button
+                size="lg"
+                className="rounded-full px-8 py-7 gap-3 bg-foreground text-background hover:bg-foreground/90 font-semibold text-base transition-all hover:scale-105 active:scale-95 shadow-xl shadow-foreground/10"
+                onClick={() => document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                Explore Work
+                <ArrowRight className="w-5 h-5" />
+              </Button>
+              <Button
+                variant="outline"
+                size="lg"
+                className="rounded-full px-8 py-7 border-white/10 glass-frosted hover:bg-white/10 text-base font-medium transition-all"
+                onClick={() => document.querySelector('#services')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                Our Services
+              </Button>
             </div>
           </div>
 
-          {/* Bottom Stats */}
-          <div className="mt-6 sm:mt-12 pt-4 sm:pt-8 border-t border-border/50">
-            <div className="flex flex-wrap justify-center lg:justify-start gap-4 sm:gap-8 lg:gap-16 text-center lg:text-left">
-              <div>
-                <div className="font-display text-xl sm:text-3xl font-bold text-foreground">5+</div>
-                <div className="text-xs sm:text-sm text-muted-foreground">Years Experience</div>
+          {/* Right Content - Circular Progress and Accents */}
+          <div className="lg:col-span-5 relative flex items-center justify-center">
+            {/* Main Circular Progress Component */}
+            <div className="relative w-64 h-64 sm:w-80 sm:h-80 flex items-center justify-center animate-fade-up" style={{ animationDelay: '0.3s' }}>
+              {/* Spinning background circles */}
+              <div className="absolute inset-0 rounded-full border border-white/5 animate-spin-slow" />
+              <div className="absolute inset-8 rounded-full border border-white/10 border-dashed animate-reverse-spin" />
+
+              {/* Glass Circle Content */}
+              <div className="relative z-10 w-48 h-48 sm:w-64 sm:h-64 rounded-full glass-heavy flex flex-col items-center justify-center shadow-2xl border border-white/20">
+                {/* SVG Progress Circle */}
+                <svg className="absolute inset-0 w-full h-full -rotate-90 transform">
+                  <circle
+                    cx="50%"
+                    cy="50%"
+                    r="45%"
+                    className="fill-none stroke-white/5"
+                    strokeWidth="4"
+                  />
+                  <circle
+                    cx="50%"
+                    cy="50%"
+                    r="45%"
+                    className="fill-none stroke-accent transition-all duration-1000 ease-out"
+                    strokeWidth="4"
+                    strokeDasharray={circumference * 5}
+                    strokeDashoffset={strokeDashoffset * 5}
+                    strokeLinecap="round"
+                    style={{ strokeDasharray: 2 * Math.PI * 45 * 0.8, strokeDashoffset: (2 * Math.PI * 45 * 0.8) * (1 - progress / 100) }}
+                  />
+                </svg>
+
+                <span className="text-4xl sm:text-6xl font-display font-bold text-foreground mb-1">{progress}%</span>
+                <span className="text-[10px] sm:text-xs font-medium text-muted-foreground uppercase tracking-widest">Innovation Rate</span>
               </div>
-              <div>
-                <div className="font-display text-xl sm:text-3xl font-bold text-foreground">50+</div>
-                <div className="text-xs sm:text-sm text-muted-foreground">Projects Completed</div>
+
+              {/* Floating Decorative Blobs */}
+              <div className="absolute -top-10 -right-10 w-32 h-32 bg-primary/20 rounded-full blur-3xl animate-float" />
+              <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-accent/20 rounded-full blur-3xl animate-float-delayed" />
+
+              {/* Floating Cards (Creative additions) */}
+              <div className="absolute top-0 -right-4 glass-frosted p-3 rounded-xl rotate-12 animate-float-delayed border border-white/10 shadow-lg">
+                <div className="w-8 h-1 bg-accent rounded-full mb-2" />
+                <div className="w-12 h-1 bg-white/20 rounded-full" />
               </div>
-              <div>
-                <div className="font-display text-xl sm:text-3xl font-bold text-foreground">30+</div>
-                <div className="text-xs sm:text-sm text-muted-foreground">Happy Clients</div>
+              <div className="absolute bottom-4 -left-8 glass-frosted p-4 rounded-xl -rotate-6 animate-float border border-white/10 shadow-lg">
+                <div className="flex gap-2">
+                  <div className="w-2 h-2 rounded-full bg-primary" />
+                  <div className="w-2 h-2 rounded-full bg-accent" />
+                  <div className="w-2 h-2 rounded-full bg-white/20" />
+                </div>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Bottom Scrolling Stats */}
+        <div className="mt-20 sm:mt-32 pt-10 border-t border-white/5 animate-fade-up" style={{ animationDelay: '0.5s' }}>
+          <div className="flex flex-wrap justify-center lg:justify-between gap-8 sm:gap-12">
+            {[
+              { label: 'Innovation Rate', value: '84%' },
+              { label: 'Successful Projects', value: '10+' },
+              { label: 'Global Clients', value: '5+' },
+            ].map((stat, i) => (
+              <div key={i} className="text-center lg:text-left space-y-1">
+                <div className="text-2xl sm:text-4xl font-display font-bold text-foreground">{stat.value}</div>
+                <div className="text-[10px] sm:text-xs font-medium text-muted-foreground uppercase tracking-wider">{stat.label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

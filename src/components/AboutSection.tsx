@@ -1,88 +1,217 @@
+import { motion } from 'framer-motion';
+import { BadgeCheck, Brain, Code2, Cpu, GitBranch, Rocket, Server, Users } from 'lucide-react';
+
 const AboutSection = () => {
-  const skills = [
-    'React', 'TypeScript', 'Node.js', 'UI/UX', 'Figma', 'Tailwind'
+  const mainSkills = [
+    { name: 'Fullstack Development', level: 95, icon: Code2 },
+    { name: 'DevOps & CI/CD', level: 88, icon: Server },
+    { name: 'Innovation & Strategy', level: 84, icon: Brain },
+    { name: 'Git & Architecture', level: 92, icon: GitBranch },
   ];
 
-  return (
-    <section id="about" className="relative py-12 sm:py-24 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 hero-gradient" />
-      <div className="absolute inset-0 circle-pattern opacity-20" />
+  const subSkills = [
+    'React', 'TypeScript', 'Node.js', 'Next.js', 'Python', 'Docker', 'AWS', 'Tailwind CSS', 'Framer Motion', 'PostgreSQL', 'Redis', 'PyTorch'
+  ];
 
-      <div className="relative z-10 container mx-auto px-3 sm:px-6">
-        <div className="glass-heavy rounded-2xl sm:rounded-3xl p-4 sm:p-8 md:p-12 lg:p-16 max-w-5xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-6 sm:gap-12 items-center">
-            {/* Left - Image/Visual */}
-            <div className="relative animate-fade-up">
-              <div className="aspect-square max-w-[200px] sm:max-w-md mx-auto relative">
-                {/* Decorative background */}
-                <div className="absolute inset-0 rounded-2xl sm:rounded-3xl bg-accent/10" />
-                <div className="absolute inset-2 sm:inset-4 glass-frosted rounded-xl sm:rounded-2xl overflow-hidden">
-                  {/* Placeholder for profile image */}
-                  <div className="w-full h-full flex items-center justify-center">
-                    <div className="text-center p-4 sm:p-8">
-                      <div className="w-14 sm:w-24 h-14 sm:h-24 mx-auto rounded-full glass-icon flex items-center justify-center mb-2 sm:mb-4">
-                        <span className="font-display text-lg sm:text-3xl font-bold text-accent">JD</span>
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as any } },
+  };
+
+  const barVariants = {
+    hidden: { width: 0 },
+    visible: (level: number) => ({
+      width: `${level}%`,
+      transition: { duration: 1.5, delay: 0.5, ease: [0.22, 1, 0.36, 1] as any }
+    })
+  };
+
+  return (
+    <section id="about" className="relative py-16 sm:py-32 overflow-hidden">
+      {/* Background with multiple layers */}
+      <div className="absolute inset-0 hero-gradient" />
+      <div className="absolute inset-0 circle-pattern opacity-10" />
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px] -z-10 animate-pulse" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent/20 rounded-full blur-[120px] -z-10 animate-pulse" style={{ animationDelay: '2s' }} />
+
+      <div className="relative z-10 container mx-auto px-4 sm:px-6">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={containerVariants}
+          className="max-w-7xl mx-auto"
+        >
+          <div className="grid lg:grid-cols-5 gap-10 lg:gap-16 items-start">
+
+            {/* Left Column: Image & Leadership Visuals (2/5) */}
+            <div className="lg:col-span-2 space-y-8">
+              <motion.div variants={itemVariants} className="relative group">
+                <div className="aspect-[4/5] relative">
+                  {/* Decorative Outer Ring */}
+                  <div className="absolute -inset-4 border border-accent/20 rounded-[2.5rem] rotate-3 group-hover:rotate-0 transition-transform duration-700" />
+                  <div className="absolute -inset-4 border border-primary/20 rounded-[2.5rem] -rotate-3 group-hover:rotate-0 transition-transform duration-700 delay-75" />
+
+                  {/* Main Portrait Container */}
+                  <div className="absolute inset-0 glass-frosted rounded-3xl overflow-hidden shadow-2xl border border-white/10">
+                    <motion.img
+                      src="/IMG_20250504_102104_717~2.jpg"
+                      alt="Ayuen Mamer Agoot"
+                      className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                    />
+                    {/* Glassy internal overlay */}
+                    <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-background/90 via-background/40 to-transparent backdrop-blur-sm">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-full glass-icon flex items-center justify-center text-accent">
+                          <Rocket size={18} />
+                        </div>
+                        <div>
+                          <p className="text-xs font-semibold text-accent uppercase tracking-widest">Founder & CEO</p>
+                          <h4 className="text-lg font-bold text-foreground">Aiton Tech</h4>
+                        </div>
                       </div>
-                      <p className="text-[10px] sm:text-sm text-muted-foreground">Your photo here</p>
                     </div>
                   </div>
                 </div>
-                
-                {/* Floating elements */}
-                <div className="absolute -top-2 sm:-top-4 -right-2 sm:-right-4 w-12 sm:w-20 h-12 sm:h-20 glass-frosted rounded-xl sm:rounded-2xl flex items-center justify-center animate-float">
-                  <span className="font-display text-base sm:text-2xl font-bold text-accent">5+</span>
+
+                {/* Floating Experience Badge */}
+                <motion.div
+                  animate={{ y: [0, -12, 0] }}
+                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute -top-6 -right-6 glass-frosted p-5 rounded-2xl shadow-xl border border-white/20 z-20"
+                >
+                  <div className="text-center">
+                    <span className="block text-3xl font-bold bg-gradient-to-br from-accent to-primary bg-clip-text text-transparent">TOP</span>
+                    <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">Dev Talent</span>
+                  </div>
+                </motion.div>
+              </motion.div>
+
+              {/* Leadership stats/Quick info */}
+              <motion.div variants={itemVariants} className="grid grid-cols-2 gap-4">
+                <div className="glass-light p-4 rounded-2xl border border-white/5">
+                  <div className="flex items-center gap-3 mb-2">
+                    <Users className="text-accent w-5 h-5" />
+                    <span className="text-xl font-bold">3</span>
+                  </div>
+                  <p className="text-xs text-muted-foreground">Core Developers</p>
                 </div>
-                <div className="absolute -bottom-2 sm:-bottom-4 -left-2 sm:-left-4 glass-frosted rounded-lg sm:rounded-xl px-2 sm:px-4 py-1 sm:py-2 animate-float-delayed">
-                  <span className="text-[10px] sm:text-sm font-medium text-foreground">Years Experience</span>
+                <div className="glass-light p-4 rounded-2xl border border-white/5">
+                  <div className="flex items-center gap-3 mb-2">
+                    <BadgeCheck className="text-primary w-5 h-5" />
+                    <span className="text-xl font-bold">10+</span>
+                  </div>
+                  <p className="text-xs text-muted-foreground">Successful Projects</p>
                 </div>
-              </div>
+              </motion.div>
+
+              <motion.div variants={itemVariants} className="glass-light p-4 rounded-2xl border border-white/5">
+                <div className="flex items-center gap-3 mb-2">
+                  <Rocket className="text-accent w-5 h-5" />
+                  <span className="text-xl font-bold">5+</span>
+                </div>
+                <p className="text-xs text-muted-foreground">Happy Clients</p>
+              </motion.div>
             </div>
 
-            {/* Right - Content */}
-            <div className="space-y-3 sm:space-y-6 animate-fade-up" style={{ animationDelay: '0.2s' }}>
-              <span className="section-number text-xs sm:text-sm">.03</span>
-              <h2 className="font-display text-2xl sm:text-4xl md:text-5xl font-bold text-foreground">
-                About Me
-              </h2>
-              <div className="space-y-2 sm:space-y-4 text-muted-foreground leading-relaxed text-sm sm:text-base">
-                <p>
-                  I'm a passionate developer and designer focused on creating 
-                  innovative digital solutions with modern web technologies.
-                </p>
+            {/* Right Column: Narrative & Technical Expertise (3/5) */}
+            <div className="lg:col-span-3 space-y-10">
+              <div className="space-y-6">
+                <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-icon border border-accent/20">
+                  <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+                  <span className="text-xs font-bold text-accent uppercase tracking-wider">.04 The Visionary</span>
+                </motion.div>
+
+                <div className="space-y-4">
+                  <motion.h2 variants={itemVariants} className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground leading-[1.1]">
+                    Spearheading the <span className="bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">Digital Frontier</span>
+                  </motion.h2>
+                  <motion.p variants={itemVariants} className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-2xl">
+                    I am <span className="text-foreground font-bold">Ayuen Mamer Agoot</span>, the innovative CEO behind <span className="text-accent font-bold">Aiton Tech</span>.
+                    Leading a nimble team of <span className="text-foreground font-bold">3 expert developers</span>, we are transforming the tech landscape in South Sudan by delivering high-impact, fullstack solutions.
+                  </motion.p>
+                </div>
               </div>
 
-              {/* Skills */}
-              <div className="pt-2 sm:pt-4">
-                <h3 className="font-display text-sm sm:text-lg font-semibold text-foreground mb-2 sm:mb-4">
-                  Core Skills
-                </h3>
-                <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                  {skills.map((skill) => (
-                    <span
-                      key={skill}
-                      className="px-2 sm:px-4 py-1 sm:py-2 rounded-full glass-icon text-accent text-[10px] sm:text-sm font-medium"
-                    >
-                      {skill}
-                    </span>
+              {/* Technical Proficiency with Progress Bars */}
+              <div className="space-y-8">
+                <motion.h3 variants={itemVariants} className="font-display text-xl font-bold flex items-center gap-3">
+                  <Cpu className="text-accent" />
+                  Technical Mastery
+                </motion.h3>
+
+                <div className="grid sm:grid-cols-2 gap-x-10 gap-y-6">
+                  {mainSkills.map((skill) => (
+                    <motion.div key={skill.name} variants={itemVariants} className="space-y-3">
+                      <div className="flex justify-between items-center">
+                        <div className="flex items-center gap-2">
+                          <skill.icon size={16} className="text-accent" />
+                          <span className="text-sm font-bold text-foreground/80">{skill.name}</span>
+                        </div>
+                        <span className="text-xs font-bold text-accent">{skill.level}%</span>
+                      </div>
+                      <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+                        <motion.div
+                          custom={skill.level}
+                          variants={barVariants}
+                          className="h-full bg-gradient-to-r from-accent to-primary"
+                        />
+                      </div>
+                    </motion.div>
                   ))}
                 </div>
               </div>
 
-              {/* Key Values */}
-              <div className="pt-2 sm:pt-4 grid grid-cols-2 gap-2 sm:gap-4">
-                <div>
-                  <h4 className="font-display font-semibold text-foreground text-sm sm:text-base">Innovation</h4>
-                  <p className="text-[10px] sm:text-sm text-muted-foreground">Pushing boundaries</p>
-                </div>
-                <div>
-                  <h4 className="font-display font-semibold text-foreground text-sm sm:text-base">Quality</h4>
-                  <p className="text-[10px] sm:text-sm text-muted-foreground">Attention to detail</p>
-                </div>
+              {/* Tag Cloud for Sub-Skills */}
+              <div className="space-y-5">
+                <motion.p variants={itemVariants} className="text-sm font-bold text-muted-foreground uppercase tracking-widest">Core Stack & Specialized Tools</motion.p>
+                <motion.div variants={itemVariants} className="flex flex-wrap gap-2">
+                  {subSkills.map((skill) => (
+                    <motion.span
+                      key={skill}
+                      whileHover={{ scale: 1.05, y: -2 }}
+                      className="px-4 py-2 rounded-xl glass-light text-xs sm:text-sm font-medium text-foreground/70 border border-white/10 hover:border-accent/40 hover:text-accent transition-all cursor-default"
+                    >
+                      {skill}
+                    </motion.span>
+                  ))}
+                </motion.div>
               </div>
+
+              {/* CEO Character Highlights */}
+              <motion.div variants={itemVariants} className="pt-6 border-t border-white/5 grid sm:grid-cols-2 gap-6">
+                <div className="flex gap-4">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-2xl glass-frosted flex items-center justify-center text-accent">
+                    <BadgeCheck size={24} />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-foreground">Strategic Leadership</h4>
+                    <p className="text-sm text-muted-foreground">Empowering talent to build the future of South Sudan tech.</p>
+                  </div>
+                </div>
+                <div className="flex gap-4">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-2xl glass-frosted flex items-center justify-center text-primary">
+                    <Brain size={24} />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-foreground">AI Integration</h4>
+                    <p className="text-sm text-muted-foreground">Leveraging Python and ML to create intelligent platforms.</p>
+                  </div>
+                </div>
+              </motion.div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

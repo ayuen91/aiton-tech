@@ -1,71 +1,145 @@
-import { Code, Palette, Rocket } from 'lucide-react';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { Code2, Cpu, Globe, Layout, Layers, Zap, Rocket, Terminal } from 'lucide-react';
+import { ReactNode } from 'react';
 
 const services = [
   {
     number: '.01',
-    title: 'Development',
-    description: 'Building robust, scalable web applications using modern technologies.',
-    icon: Code,
+    title: 'Fullstack Systems',
+    description: 'Engineering resilient, scalable digital ecosystems using React, Node.js, and advanced cloud architectures.',
+    icon: Code2,
+    color: 'from-accent to-primary'
   },
   {
     number: '.02',
-    title: 'Design',
-    description: 'Creating beautiful, user-centered interfaces that deliver results.',
-    icon: Palette,
+    title: 'AI & Data Intelligence',
+    description: 'Integrating intelligent agents and predictive models using Python, training custom LLMs for enterprise automation.',
+    icon: Cpu,
+    color: 'from-primary to-purple-500'
   },
   {
     number: '.03',
-    title: 'Strategy',
-    description: 'Developing digital strategies that drive growth and success.',
-    icon: Rocket,
-  },
+    title: 'Digital Experience',
+    description: 'Crafting ultra-premium, conversion-focused interfaces with high-end Framer Motion animations and glassmorphism.',
+    icon: Layout,
+    color: 'from-blue-500 to-accent'
+  }
 ];
+
+const ServiceCard = ({ service, index }: { service: any, index: number }) => {
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const mouseXSpring = useSpring(x);
+  const mouseYSpring = useSpring(y);
+
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["10deg", "-10deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-10deg", "10deg"]);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+    const xPct = mouseX / width - 0.5;
+    const yPct = mouseY / height - 0.5;
+    x.set(xPct);
+    y.set(yPct);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+      className="relative group h-full"
+    >
+      <div className="h-full glass-frosted rounded-[2rem] p-6 sm:p-8 border border-white/5 shadow-2xl transition-all duration-500 group-hover:border-accent/30 overflow-hidden">
+        {/* Animated Background Glow */}
+        <div className={`absolute -inset-24 bg-gradient-to-r ${service.color} opacity-0 group-hover:opacity-10 blur-[80px] transition-opacity duration-700`} />
+
+        {/* Content with 3D feel */}
+        <div style={{ transform: "translateZ(50px)" }} className="relative z-10 space-y-4">
+          <div className="flex justify-between items-start">
+            <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${service.color} flex items-center justify-center text-background shadow-lg shadow-accent/20`}>
+              <service.icon size={24} />
+            </div>
+            <span className="text-2xl font-serif italic text-accent opacity-20 group-hover:opacity-40 transition-opacity">
+              {service.number}
+            </span>
+          </div>
+
+          <div className="space-y-2">
+            <h3 className="font-display text-xl font-bold text-foreground">
+              {service.title}
+            </h3>
+            <p className="text-muted-foreground leading-relaxed text-xs sm:text-sm font-medium">
+              {service.description}
+            </p>
+          </div>
+
+        </div>
+
+        {/* Decorative Grid Pattern */}
+        <div className="absolute inset-0 circle-pattern opacity-0 group-hover:opacity-10 transition-opacity pointer-events-none" />
+      </div>
+    </motion.div>
+  );
+};
 
 const ServicesSection = () => {
   return (
-    <section id="services" className="relative py-12 sm:py-24 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 gradient-bg opacity-50" />
-      <div className="absolute inset-0 circle-pattern opacity-30" />
+    <section id="services" className="relative py-24 sm:py-32 overflow-hidden">
+      {/* Dynamic Background Elements */}
+      <div className="absolute inset-0 hero-gradient opacity-40" />
+      <div className="absolute top-1/4 -left-20 w-80 h-80 bg-accent/20 rounded-full blur-[100px] animate-pulse" />
+      <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-primary/20 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '3s' }} />
 
-      <div className="relative z-10 container mx-auto px-3 sm:px-6">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6">
         {/* Section Header */}
-        <div className="text-center mb-8 sm:mb-16 animate-fade-up">
-          <span className="section-number block mb-2 sm:mb-4 text-xs sm:text-sm">.02</span>
-          <h2 className="font-display text-2xl sm:text-4xl md:text-5xl font-bold text-foreground mb-2 sm:mb-4">
-            Services
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-sm sm:text-lg">
-            Comprehensive solutions tailored to bring your vision to life
-          </p>
+        <div className="text-center mb-16 sm:mb-20">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="inline-block px-4 py-1.5 rounded-full glass-icon border border-accent/20 mb-6"
+          >
+            <span className="text-[10px] sm:text-xs font-bold text-accent tracking-[0.3em] uppercase">.02 Core Capabilities</span>
+          </motion.div>
+
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="font-display text-4xl sm:text-6xl font-extrabold text-foreground mb-6"
+          >
+            Digital <span className="bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">Powerhouse</span>
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-muted-foreground max-w-2xl mx-auto text-base sm:text-lg font-medium"
+          >
+            Bridging the gap between ambitious ideas and technical reality.
+          </motion.p>
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-3 gap-2 sm:gap-6 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-7xl mx-auto">
           {services.map((service, index) => (
-            <div
-              key={service.title}
-              className="glass-frosted rounded-xl sm:rounded-2xl p-3 sm:p-8 group hover:scale-[1.02] transition-all duration-300 animate-fade-up"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              {/* Icon */}
-              <div className="w-8 sm:w-14 h-8 sm:h-14 rounded-lg sm:rounded-xl glass-icon flex items-center justify-center mb-3 sm:mb-6 group-hover:bg-primary/20 transition-colors">
-                <service.icon className="w-4 sm:w-7 h-4 sm:h-7 text-accent" />
-              </div>
-
-              {/* Number */}
-              <span className="section-number text-[10px] sm:text-sm">{service.number}</span>
-
-              {/* Title */}
-              <h3 className="font-display text-xs sm:text-xl font-bold text-foreground mt-1 sm:mt-2 mb-1 sm:mb-3">
-                {service.title}
-              </h3>
-
-              {/* Description */}
-              <p className="text-muted-foreground text-[10px] sm:text-sm leading-relaxed hidden sm:block">
-                {service.description}
-              </p>
-            </div>
+            <ServiceCard key={service.title} service={service} index={index} />
           ))}
         </div>
       </div>
