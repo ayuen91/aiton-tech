@@ -31,6 +31,7 @@ const Footer = () => {
 
   const contactInfo = [
     { label: 'WhatsApp', value: '+211 928 400 317', href: 'https://wa.me/211928400317' },
+    { label: 'Call', value: '+211 928 400 317', href: 'tel:+211928400317' },
     { label: 'Email', value: 'ayuenito@gmail.com', href: 'mailto:ayuenito@gmail.com' }
   ];
 
@@ -54,30 +55,19 @@ const Footer = () => {
             Let's Build the <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent italic font-serif">Future</span> Together
           </h2>
 
-          <div className="grid sm:grid-cols-2 gap-6 mb-10 sm:mb-16 max-w-2xl mx-auto">
+          <div className="grid sm:grid-cols-3 gap-4 sm:gap-6 mb-10 sm:mb-16 max-w-4xl mx-auto">
             {contactInfo.map((info) => (
               <motion.a
                 key={info.label}
                 href={info.href}
                 whileHover={{ scale: 1.02, y: -5 }}
-                className="glass-frosted p-6 rounded-2xl border border-white/5 group hover:border-accent/30 transition-all text-center"
+                className="glass-frosted p-4 sm:p-6 rounded-2xl border border-white/5 group hover:border-accent/30 transition-all text-center"
               >
                 <p className="text-[10px] font-bold text-accent uppercase tracking-widest mb-2">{info.label}</p>
-                <p className="text-foreground font-bold text-sm sm:text-lg group-hover:text-accent transition-colors">{info.value}</p>
+                <p className="text-foreground font-bold text-xs sm:text-base lg:text-lg group-hover:text-accent transition-colors truncate">{info.value}</p>
               </motion.a>
             ))}
           </div>
-
-          <motion.div variants={itemVariants} className="pt-4">
-            <Button
-              size="lg"
-              className="rounded-full px-10 py-8 gap-3 bg-foreground text-background hover:bg-foreground/90 font-extrabold text-lg transition-all hover:scale-105 active:scale-95 shadow-2xl shadow-foreground/20"
-              onClick={() => window.location.href = 'https://wa.me/211928400317'}
-            >
-              Get In Touch
-              <ArrowRight className="w-6 h-6 text-accent" />
-            </Button>
-          </motion.div>
         </motion.div>
 
         {/* Footer Links */}

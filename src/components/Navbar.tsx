@@ -1,13 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { Home, Briefcase, Layout, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const navLinks = [
-  { name: 'Home', href: '#home' },
-  { name: 'Services', href: '#services' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'About', href: '#about' },
+  { name: 'Home', href: '#home', icon: Home },
+  { name: 'Services', href: '#services', icon: Layout },
+  { name: 'Projects', href: '#projects', icon: Briefcase },
+  { name: 'About', href: '#about', icon: User },
 ];
 
 const Navbar = () => {
@@ -74,7 +74,7 @@ const Navbar = () => {
       transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
       className={`fixed top-2 sm:top-4 left-1/2 z-50 transition-all duration-500 w-[96%] sm:w-[95%] max-w-5xl`}
     >
-      <div className={`glass-navbar rounded-xl sm:rounded-2xl px-4 sm:px-8 py-2 sm:py-4 flex items-center justify-between shadow-2xl transition-all duration-300 ${isScrolled ? 'py-2 sm:py-3' : 'py-3 sm:py-5'}`}>
+      <div className={`glass-navbar rounded-xl sm:rounded-2xl px-3 sm:px-8 py-2 sm:py-4 flex items-center justify-between shadow-2xl transition-all duration-300 ${isScrolled ? 'py-2 sm:py-3' : 'py-3 sm:py-5'}`}>
         {/* Logo */}
         <motion.a
           href="#home"
@@ -84,16 +84,17 @@ const Navbar = () => {
             e.preventDefault();
             scrollToSection('#home');
           }}
-          className="font-display text-base sm:text-xl font-black text-foreground tracking-tighter cursor-pointer flex-shrink-0"
+          className="font-display text-base sm:text-lg lg:text-xl font-black text-foreground tracking-tighter cursor-pointer flex-shrink-0 mr-2 sm:mr-0"
         >
           AITON<span className="text-accent">TECH</span>
         </motion.a>
 
         {/* Navigation with sliding indicator */}
-        <div className="relative flex items-center gap-1 sm:gap-2 mx-auto">
+        <div className="relative flex items-center gap-1 sm:gap-2 mx-auto overflow-hidden sm:overflow-visible p-1">
           {navLinks.map((link) => {
             const sectionId = link.href.replace('#', '');
             const isActive = activeSection === sectionId;
+            const Icon = link.icon;
 
             return (
               <a
@@ -103,7 +104,7 @@ const Navbar = () => {
                   e.preventDefault();
                   scrollToSection(link.href);
                 }}
-                className={`relative px-2 sm:px-4 py-1.5 sm:py-2 text-[10px] sm:text-sm font-bold transition-colors duration-300 rounded-lg ${isActive
+                className={`relative px-3 sm:px-5 py-2 sm:py-2.5 flex items-center gap-2 text-[10px] sm:text-sm font-extrabold transition-all duration-300 rounded-lg ${isActive
                   ? 'text-foreground'
                   : 'text-muted-foreground hover:text-foreground'
                   }`}
@@ -124,7 +125,8 @@ const Navbar = () => {
                     <div className="absolute -inset-1 rounded-xl bg-primary/10 blur-md -z-10" />
                   </motion.div>
                 )}
-                <span className="relative z-10 whitespace-nowrap">
+                <Icon className={`w-3.5 h-3.5 sm:w-4 sm:h-4 relative z-10 transition-transform duration-300 ${isActive ? 'scale-110' : ''}`} />
+                <span className={`relative z-10 whitespace-nowrap hidden sm:block ${isActive ? '!block' : ''}`}>
                   {link.name}
                 </span>
               </a>
@@ -133,15 +135,14 @@ const Navbar = () => {
         </div>
 
         {/* CTA Button */}
-        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="flex-shrink-0">
           <Button
             variant="default"
             size="sm"
-            className="rounded-full px-4 sm:px-6 py-1 sm:py-2 gap-1 sm:gap-2 bg-foreground text-background hover:bg-foreground/90 text-[10px] sm:text-sm font-bold shadow-lg border border-white/10"
+            className="rounded-full px-4 sm:px-6 py-1 sm:py-2 bg-foreground text-background hover:bg-foreground/90 text-[10px] sm:text-sm font-extrabold shadow-lg border border-white/10"
             onClick={() => scrollToSection('#contact')}
           >
             Contact
-            <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4" />
           </Button>
         </motion.div>
       </div>

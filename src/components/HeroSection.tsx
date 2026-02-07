@@ -1,50 +1,46 @@
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import ImageSequence from './ImageSequence';
-import { Progress } from '@/components/ui/progress';
+import BackgroundAnimation from './BackgroundAnimation';
 import { useState, useEffect } from 'react';
-
-// Frame sequence from public/frames directory
-const videoFrames: string[] = Array.from({ length: 31 }, (_, i) =>
-  `/frames/ezgif-frame-${String(i + 1).padStart(3, '0')}.png`
-);
-
-// Update hero content to use AYUEN branding
+import { motion, useMotionValue, useTransform, animate } from 'framer-motion';
 
 const HeroSection = () => {
-  const [progress, setProgress] = useState(0);
+  const [displayProgress, setDisplayProgress] = useState(0);
+  const count = useMotionValue(0);
+  const rounded = useTransform(count, (latest) => Math.round(latest));
 
-  // Animate progress to 84%
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setProgress(84);
-    }, 500);
-    return () => clearTimeout(timer);
-  }, []);
+    const animation = animate(count, 84, {
+      duration: 2,
+      delay: 0.5,
+      ease: "easeOut",
+      onUpdate: (latest) => setDisplayProgress(Math.round(latest))
+    });
+    return animation.stop;
+  }, [count]);
 
   // Calculate circular stroke
   const radius = 45;
   const circumference = 2 * Math.PI * radius;
-  const strokeDashoffset = circumference - (progress / 100) * circumference;
+  const strokeDashoffset = circumference - (displayProgress / 100) * circumference;
 
   return (
     <section
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Full-screen Background Image Sequence */}
+      {/* Full-screen Background Animation */}
       <div className="absolute inset-0 z-0">
-        <ImageSequence
-          frames={videoFrames}
-          fps={12}
-          pingPong={true}
-          className="w-full h-full object-cover opacity-40 scale-105"
+        <BackgroundAnimation
+          src="/aitontech.com-webp.webp"
+          className="opacity-40"
         />
         {/* Overlays for better readability and aesthetic */}
         <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/10 to-background" />
         <div className="absolute inset-0 bg-background/30 backdrop-blur-[2px]" />
         <div className="absolute inset-0 circle-pattern opacity-40" />
       </div>
+
 
       {/* Main Content */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6 py-20 sm:py-32">
@@ -109,16 +105,20 @@ const HeroSection = () => {
                     cx="50%"
                     cy="50%"
                     r="45%"
-                    className="fill-none stroke-accent transition-all duration-1000 ease-out"
+                    className="fill-none stroke-accent transition-all duration-300 ease-out"
                     strokeWidth="4"
-                    strokeDasharray={circumference * 5}
-                    strokeDashoffset={strokeDashoffset * 5}
+                    strokeDasharray={circumference}
+                    strokeDashoffset={strokeDashoffset}
                     strokeLinecap="round"
-                    style={{ strokeDasharray: 2 * Math.PI * 45 * 0.8, strokeDashoffset: (2 * Math.PI * 45 * 0.8) * (1 - progress / 100) }}
+                    style={{
+                      filter: 'drop-shadow(0 0 8px hsl(var(--accent)))',
+                    }}
                   />
                 </svg>
 
-                <span className="text-4xl sm:text-6xl font-display font-bold text-foreground mb-1">{progress}%</span>
+                <motion.span className="text-4xl sm:text-6xl font-display font-bold text-foreground mb-1">
+                  {displayProgress}%
+                </motion.span>
                 <span className="text-[10px] sm:text-xs font-medium text-muted-foreground uppercase tracking-widest">Innovation Rate</span>
               </div>
 

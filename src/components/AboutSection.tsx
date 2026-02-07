@@ -1,5 +1,53 @@
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, animate } from 'framer-motion';
+import { useState, useEffect } from 'react';
 import { BadgeCheck, Brain, Code2, Cpu, GitBranch, Rocket, Server, Users } from 'lucide-react';
+
+const SkillBar = ({ skill, variants }: { skill: any, variants: any }) => {
+  const [displayLevel, setDisplayLevel] = useState(0);
+  const count = useMotionValue(0);
+
+  useEffect(() => {
+    const animation = animate(count, skill.level, {
+      duration: 2,
+      delay: 0.5,
+      ease: "easeOut",
+      onUpdate: (latest) => setDisplayLevel(Math.round(latest))
+    });
+    return animation.stop;
+  }, [count, skill.level]);
+
+  return (
+    <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} className="space-y-3">
+      <div className="flex justify-between items-center">
+        <div className="flex items-center gap-2">
+          <skill.icon size={16} className="text-accent" />
+          <span className="text-sm font-bold text-foreground/80">{skill.name}</span>
+        </div>
+        <span className="text-xs font-bold text-accent">{displayLevel}%</span>
+      </div>
+      <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden relative">
+        <motion.div
+          custom={skill.level}
+          variants={variants}
+          className="h-full bg-gradient-to-r from-accent to-primary relative"
+        >
+          {/* Shimmer Effect */}
+          <motion.div
+            animate={{
+              x: ['-100%', '100%'],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent w-full h-full"
+          />
+        </motion.div>
+      </div>
+    </motion.div>
+  );
+};
 
 const AboutSection = () => {
   const mainSkills = [
@@ -152,22 +200,7 @@ const AboutSection = () => {
 
                 <div className="grid sm:grid-cols-2 gap-x-10 gap-y-6">
                   {mainSkills.map((skill) => (
-                    <motion.div key={skill.name} variants={itemVariants} className="space-y-3">
-                      <div className="flex justify-between items-center">
-                        <div className="flex items-center gap-2">
-                          <skill.icon size={16} className="text-accent" />
-                          <span className="text-sm font-bold text-foreground/80">{skill.name}</span>
-                        </div>
-                        <span className="text-xs font-bold text-accent">{skill.level}%</span>
-                      </div>
-                      <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
-                        <motion.div
-                          custom={skill.level}
-                          variants={barVariants}
-                          className="h-full bg-gradient-to-r from-accent to-primary"
-                        />
-                      </div>
-                    </motion.div>
+                    <SkillBar key={skill.name} skill={skill} variants={barVariants} />
                   ))}
                 </div>
               </div>
