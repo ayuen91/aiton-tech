@@ -109,8 +109,9 @@ const Navbar = () => {
                     className="absolute inset-0 z-0 overflow-hidden rounded-lg glass-active"
                     transition={{
                       type: "spring",
-                      stiffness: 350,
-                      damping: 35
+                      stiffness: 200,
+                      damping: 20,
+                      mass: 0.5
                     }}
                   >
                     <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-white/10 to-transparent" />

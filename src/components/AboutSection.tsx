@@ -1,8 +1,14 @@
-import { motion, useMotionValue, animate } from 'framer-motion';
+import { motion, useMotionValue, animate, Variants } from 'framer-motion';
 import { useState, useEffect } from 'react';
-import { BadgeCheck, Brain, Code2, Cpu, GitBranch, Rocket, Server, Users } from 'lucide-react';
+import { LucideIcon, BadgeCheck, Brain, Code2, Cpu, GitBranch, Rocket, Server, Users } from 'lucide-react';
 
-const SkillBar = ({ skill, variants }: { skill: any, variants: any }) => {
+interface Skill {
+  name: string;
+  level: number;
+  icon: LucideIcon;
+}
+
+const SkillBar = ({ skill, variants }: { skill: Skill; variants: Variants }) => {
   const [displayLevel, setDisplayLevel] = useState(0);
   const count = useMotionValue(0);
 
@@ -73,14 +79,14 @@ const AboutSection = () => {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as any } },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
   };
 
   const barVariants = {
     hidden: { width: 0 },
     visible: (level: number) => ({
       width: `${level}%`,
-      transition: { duration: 1.5, delay: 0.5, ease: [0.22, 1, 0.36, 1] as any }
+      transition: { duration: 1.5, delay: 0.5 }
     })
   };
 
@@ -186,7 +192,7 @@ const AboutSection = () => {
                   </motion.h2>
                   <motion.p variants={itemVariants} className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-2xl">
                     I am <span className="text-foreground font-bold">Ayuen Mamer Agoot</span>, the innovative CEO of <span className="text-accent font-bold">Aiton Tech</span>.
-                    With a dedicated team, we specialize in helping small businesses in Juba and South Sudan increase their online presence, improve marketability, and achieve sustainable growth through professional software development and digital marketing solutions.
+                    With a dedicated team, we specialize in helping small businesses in Juba, South Sudan and East Africa increase their online presence, improve marketability, and achieve sustainable growth through professional software development and digital marketing solutions.
                   </motion.p>
                 </div>
               </div>

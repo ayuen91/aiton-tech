@@ -85,7 +85,7 @@ const HeroSection = () => {
               <Button
                 variant="outline"
                 size="lg"
-                className="rounded-full px-8 py-7 border-white/10 glass-frosted hover:bg-white/10 text-base font-medium transition-all"
+                className="rounded-full px-8 py-7 border-accent/50 glass-frosted bg-gradient-to-br from-accent/10 to-primary/10 text-foreground hover:bg-gradient-to-br hover:from-accent/25 hover:to-primary/25 hover:border-accent active:scale-95 text-base font-medium transition-all shadow-lg shadow-accent/10 hover:shadow-lg hover:shadow-accent/20"
                 onClick={() => document.querySelector('#services')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 Our Services
@@ -158,8 +158,8 @@ const HeroSection = () => {
           <div className="flex flex-wrap justify-center lg:justify-between gap-8 sm:gap-12">
             {[
               { label: 'Success Rate', value: '98%' },
-              { label: 'Projects Delivered', value: '50+' },
-              { label: 'Happy Clients', value: '30+' },
+              { label: 'Projects Delivered', value: '10+' },
+              { label: 'Happy Clients', value: '5+' },
             ].map((stat, i) => (
               <div key={i} className="text-center lg:text-left space-y-1">
                 <div className="text-2xl sm:text-4xl font-display font-bold text-foreground">{stat.value}</div>

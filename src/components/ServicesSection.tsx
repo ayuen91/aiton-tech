@@ -1,8 +1,16 @@
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { Code2, Cpu, Globe, Layout, Layers, Zap, Rocket, Terminal } from 'lucide-react';
+import { LucideIcon, Code2, Cpu, Globe, Layout, Layers, Zap, Rocket, Terminal } from 'lucide-react';
 import { ReactNode } from 'react';
 
-const services = [
+interface Service {
+  number: string;
+  title: string;
+  description: string;
+  icon: LucideIcon;
+  color: string;
+}
+
+const services: Service[] = [
   {
     number: '.01',
     title: 'Web Development & E-commerce',
@@ -26,7 +34,7 @@ const services = [
   }
 ];
 
-const ServiceCard = ({ service, index }: { service: any, index: number }) => {
+const ServiceCard = ({ service, index }: { service: Service; index: number }) => {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
