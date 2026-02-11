@@ -29,4 +29,4 @@ User-agent: WhatsApp
 Allow: /
 
 # Sitemap location
-Sitemap: https://aiton-tech.vercel.app/sitemap.xml
+Sitemap: https://aitontech.online/sitemap.xml

@@ -2,7 +2,7 @@
 
 A premier, design-driven agency specializing in fullstack development, DevOps, and AI-powered solutions. Led by CEO **Ayuen Mamer Agoot**, Aiton Tech transforms complex ideas into immersive digital experiences.
 
-[Live Site](https://aiton-tech.vercel.app) | [WhatsApp](https://wa.me/211928400317) | [Email](mailto:ayuenito@gmail.com)
+[Live Site](https://aitontech.online) | [WhatsApp](https://wa.me/211928400317) | [Email](mailto:ayuenito@gmail.com)
 
 ## ✨ Core Features
 

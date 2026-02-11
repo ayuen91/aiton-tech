@@ -4,24 +4,24 @@
 
   <!-- Homepage -->
   <url>
-    <loc>https://aiton-tech.vercel.app/</loc>
+    <loc>https://aitontech.online/</loc>
     <lastmod>2026-02-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://aiton-tech.vercel.app/ayuen-mamer-agoot.webp</image:loc>
+      <image:loc>https://aitontech.online/ayuen-mamer-agoot.webp</image:loc>
       <image:title>Ayuen Mamer Agoot - CEO of Aiton Tech</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://aiton-tech.vercel.app/projects/jahir-us.webp</image:loc>
+      <image:loc>https://aitontech.online/projects/jahir-us.webp</image:loc>
       <image:title>Jahir Trade Guide - Portfolio Project</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://aiton-tech.vercel.app/projects/kuoiawan-vercel-app.webp</image:loc>
+      <image:loc>https://aitontech.online/projects/kuoiawan-vercel-app.webp</image:loc>
       <image:title>Selector Kuoi Awan - Entertainment E-commerce</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://aiton-tech.vercel.app/projects/sagwanda-vercel-app.webp</image:loc>
+      <image:loc>https://aitontech.online/projects/sagwanda-vercel-app.webp</image:loc>
       <image:title>SA Gwanda Footwear - E-commerce Platform</image:title>
     </image:image>
   </url>

@@ -47,13 +47,13 @@ export const structuredData = {
     "@type": "LocalBusiness",
     "name": "Aiton Tech",
     "description": "Software development company in Juba helping small businesses increase online presence",
-    "url": "https://aiton-tech.vercel.app",
+    "url": "https://aitontech.online",
     "areaServed": {
       "@type": "Country",
       "name": "South Sudan"
     }
   },
-  
+
   service: (title: string, description: string) => ({
     "@context": "https://schema.org",
     "@type": "Service",
