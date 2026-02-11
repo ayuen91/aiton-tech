@@ -51,14 +51,14 @@ const SkillBar = ({ skill, variants }: { skill: any, variants: any }) => {
 
 const AboutSection = () => {
   const mainSkills = [
-    { name: 'Fullstack Development', level: 95, icon: Code2 },
-    { name: 'DevOps & CI/CD', level: 88, icon: Server },
-    { name: 'Innovation & Strategy', level: 84, icon: Brain },
-    { name: 'Git & Architecture', level: 92, icon: GitBranch },
+    { name: 'Web Development', level: 95, icon: Code2 },
+    { name: 'Digital Marketing & SEO', level: 88, icon: Rocket },
+    { name: 'Business Solutions', level: 90, icon: Brain },
+    { name: 'Project Management', level: 92, icon: GitBranch },
   ];
 
   const subSkills = [
-    'React', 'TypeScript', 'Node.js', 'Next.js', 'Python', 'Docker', 'AWS', 'Tailwind CSS', 'Framer Motion', 'PostgreSQL', 'Redis', 'PyTorch'
+    'React', 'TypeScript', 'Node.js', 'E-commerce', 'SEO', 'Digital Marketing', 'UI/UX Design', 'Mobile Development', 'Cloud Infrastructure', 'Business Growth', 'Strategy', 'Consulting'
   ];
 
   const containerVariants = {
@@ -113,8 +113,8 @@ const AboutSection = () => {
                   {/* Main Portrait Container */}
                   <div className="absolute inset-0 glass-frosted rounded-3xl overflow-hidden shadow-2xl border border-white/10">
                     <motion.img
-                      src="/IMG_20250504_102104_717~2.jpg"
-                      alt="Ayuen Mamer Agoot"
+                      src="/ayuen-mamer-agoot.webp"
+                      alt="Ayuen Mamer Agoot - CEO of Aiton Tech"
                       className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                     />
                     {/* Glassy internal overlay */}
@@ -182,11 +182,11 @@ const AboutSection = () => {
 
                 <div className="space-y-4">
                   <motion.h2 variants={itemVariants} className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground leading-[1.1]">
-                    Spearheading the <span className="bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">Digital Frontier</span>
+                    Helping Small <span className="bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">Businesses Grow</span>
                   </motion.h2>
                   <motion.p variants={itemVariants} className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-2xl">
-                    I am <span className="text-foreground font-bold">Ayuen Mamer Agoot</span>, the innovative CEO behind <span className="text-accent font-bold">Aiton Tech</span>.
-                    Leading a nimble team of <span className="text-foreground font-bold">3 expert developers</span>, we are transforming the tech landscape in South Sudan by delivering high-impact, fullstack solutions.
+                    I am <span className="text-foreground font-bold">Ayuen Mamer Agoot</span>, the innovative CEO of <span className="text-accent font-bold">Aiton Tech</span>.
+                    With a dedicated team, we specialize in helping small businesses in Juba and South Sudan increase their online presence, improve marketability, and achieve sustainable growth through professional software development and digital marketing solutions.
                   </motion.p>
                 </div>
               </div>
@@ -195,7 +195,7 @@ const AboutSection = () => {
               <div className="space-y-8">
                 <motion.h3 variants={itemVariants} className="font-display text-xl font-bold flex items-center gap-3">
                   <Cpu className="text-accent" />
-                  Technical Mastery
+                  Our Expertise
                 </motion.h3>
 
                 <div className="grid sm:grid-cols-2 gap-x-10 gap-y-6">
@@ -207,7 +207,7 @@ const AboutSection = () => {
 
               {/* Tag Cloud for Sub-Skills */}
               <div className="space-y-5">
-                <motion.p variants={itemVariants} className="text-sm font-bold text-muted-foreground uppercase tracking-widest">Core Stack & Specialized Tools</motion.p>
+                <motion.p variants={itemVariants} className="text-sm font-bold text-muted-foreground uppercase tracking-widest">Services & Specializations</motion.p>
                 <motion.div variants={itemVariants} className="flex flex-wrap gap-2">
                   {subSkills.map((skill) => (
                     <motion.span
@@ -228,17 +228,17 @@ const AboutSection = () => {
                     <BadgeCheck size={24} />
                   </div>
                   <div>
-                    <h4 className="font-bold text-foreground">Strategic Leadership</h4>
-                    <p className="text-sm text-muted-foreground">Empowering talent to build the future of South Sudan tech.</p>
+                    <h4 className="font-bold text-foreground">Business Growth</h4>
+                    <p className="text-sm text-muted-foreground">Helping SMEs establish and grow their digital presence.</p>
                   </div>
                 </div>
                 <div className="flex gap-4">
                   <div className="flex-shrink-0 w-12 h-12 rounded-2xl glass-frosted flex items-center justify-center text-primary">
-                    <Brain size={24} />
+                    <Rocket size={24} />
                   </div>
                   <div>
-                    <h4 className="font-bold text-foreground">AI Integration</h4>
-                    <p className="text-sm text-muted-foreground">Leveraging Python and ML to create intelligent platforms.</p>
+                    <h4 className="font-bold text-foreground">Proven Results</h4>
+                    <p className="text-sm text-muted-foreground">Delivering measurable success for our clients in South Sudan.</p>
                   </div>
                 </div>
               </motion.div>

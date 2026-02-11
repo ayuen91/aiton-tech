@@ -1,12 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Home, Briefcase, Layout, User } from 'lucide-react';
+import { Home, Zap, Grid3x3, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const navLinks = [
   { name: 'Home', href: '#home', icon: Home },
-  { name: 'Services', href: '#services', icon: Layout },
-  { name: 'Projects', href: '#projects', icon: Briefcase },
+  { name: 'Services', href: '#services', icon: Zap },
+  { name: 'Projects', href: '#projects', icon: Grid3x3 },
   { name: 'About', href: '#about', icon: User },
 ];
 
@@ -20,16 +20,10 @@ const Navbar = () => {
       if (scrollRaf.current) {
         cancelAnimationFrame(scrollRaf.current);
       }
-
       scrollRaf.current = requestAnimationFrame(() => {
         setIsScrolled(window.scrollY > 20);
-
-        const scrollPosition = window.scrollY + 120; // Improved offset for detection
-
-        // Determine active section based on scroll position
+        const scrollPosition = window.scrollY + 120;
         let currentSection = 'home';
-
-        // Check from bottom to top to find the current active one
         for (let i = navLinks.length - 1; i >= 0; i--) {
           const sectionId = navLinks[i].href.replace('#', '');
           const element = document.getElementById(sectionId);
@@ -40,21 +34,24 @@ const Navbar = () => {
             }
           }
         }
-
         setActiveSection(currentSection);
       });
     };
-
     window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
+    // Delay initial scroll handler to after first paint to avoid flicker
+    const timeout = setTimeout(() => {
+      handleScroll();
+    }, 100);
     return () => {
       window.removeEventListener('scroll', handleScroll);
       if (scrollRaf.current) cancelAnimationFrame(scrollRaf.current);
+      clearTimeout(timeout);
     };
   }, []);
 
   const scrollToSection = (href: string) => {
     const id = href.replace('#', '');
+    setActiveSection(id); // Set active section immediately to prevent indicator jump
     if (id === 'home') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
@@ -69,12 +66,9 @@ const Navbar = () => {
 
   return (
     <motion.nav
-      initial={{ y: -100, x: "-50%", opacity: 0 }}
-      animate={{ y: 0, x: "-50%", opacity: 1 }}
-      transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
-      className={`fixed top-2 sm:top-4 left-1/2 z-50 transition-all duration-500 w-[96%] sm:w-[95%] max-w-5xl`}
+      className="fixed top-2 sm:top-4 left-1/2 -translate-x-1/2 z-50 w-[96%] sm:w-[95%] max-w-5xl"
     >
-      <div className={`glass-navbar rounded-xl sm:rounded-2xl px-3 sm:px-8 py-2 sm:py-4 flex items-center justify-between shadow-2xl transition-all duration-300 ${isScrolled ? 'py-2 sm:py-3' : 'py-3 sm:py-5'}`}>
+      <div className="glass-navbar rounded-xl sm:rounded-2xl px-3 sm:px-8 py-3 sm:py-5 flex items-center justify-between shadow-2xl">
         {/* Logo */}
         <motion.a
           href="#home"
@@ -90,7 +84,7 @@ const Navbar = () => {
         </motion.a>
 
         {/* Navigation with sliding indicator */}
-        <div className="relative flex items-center gap-1 sm:gap-2 mx-auto overflow-hidden sm:overflow-visible p-1">
+        <div className="relative flex items-center gap-0.5 sm:gap-2 mx-auto overflow-hidden sm:overflow-visible p-1">
           {navLinks.map((link) => {
             const sectionId = link.href.replace('#', '');
             const isActive = activeSection === sectionId;
@@ -104,7 +98,7 @@ const Navbar = () => {
                   e.preventDefault();
                   scrollToSection(link.href);
                 }}
-                className={`relative px-3 sm:px-5 py-2 sm:py-2.5 flex items-center gap-2 text-[10px] sm:text-sm font-extrabold transition-all duration-300 rounded-lg ${isActive
+                className={`relative px-2 sm:px-5 py-2 sm:py-2.5 flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-sm font-black transition-all duration-300 rounded-lg ${isActive
                   ? 'text-foreground'
                   : 'text-muted-foreground hover:text-foreground'
                   }`}
@@ -125,7 +119,7 @@ const Navbar = () => {
                     <div className="absolute -inset-1 rounded-xl bg-primary/10 blur-md -z-10" />
                   </motion.div>
                 )}
-                <Icon className={`w-3.5 h-3.5 sm:w-4 sm:h-4 relative z-10 transition-transform duration-300 ${isActive ? 'scale-110' : ''}`} />
+                <Icon className={`w-4 h-4 sm:w-5 sm:h-5 relative z-10 transition-all duration-300 ${isActive ? 'scale-125 text-accent drop-shadow-[0_0_8px_rgba(var(--accent-rgb),0.5)]' : 'group-hover:text-accent'}`} />
                 <span className={`relative z-10 whitespace-nowrap hidden sm:block ${isActive ? '!block' : ''}`}>
                   {link.name}
                 </span>

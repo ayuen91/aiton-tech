@@ -8,7 +8,7 @@ const projects = [
     link: 'https://jahir.us',
     category: 'Portfolio / Fintech',
     description: 'A stylistic portfolio website for Jahir Trade Guide featuring intricate TradingView charts integration and high-end animations for financial analysis.',
-    image: '/projects/screencapture-jahir-us-2026-02-05-18_25_32.png',
+    image: '/projects/jahir-us.webp',
     stack: ['React', 'TradingView API', 'Framer Motion', 'Tailwind CSS']
   },
   {
@@ -17,7 +17,7 @@ const projects = [
     link: 'https://kuoiawan.vercel.app',
     category: 'Entertainment / E-commerce',
     description: 'Dynamic portfolio for DJ Selector Kuoi Awan with high-quality music download capabilities and a fully integrated shop page for bookings and merch.',
-    image: '/projects/screencapture-kuoiawan-vercel-app-2026-02-05-18_24_25.png',
+    image: '/projects/kuoiawan-vercel-app.webp',
     stack: ['React', 'Supabase', 'Stripe', 'Framer Motion']
   },
   {
@@ -26,7 +26,7 @@ const projects = [
     link: 'https://sagwanda.vercel.app',
     category: 'E-commerce',
     description: 'Nairobi-based footwear emporium. A robust e-commerce platform that has consistently delighted Kenyan customers with seamless footwear shopping experience.',
-    image: '/projects/screencapture-sagwanda-vercel-app-2026-02-05-18_27_46.png',
+    image: '/projects/sagwanda-vercel-app.webp',
     stack: ['React', 'Redux', 'Cloudinary', 'Node.js']
   },
 ];

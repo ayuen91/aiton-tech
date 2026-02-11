@@ -35,7 +35,7 @@ const HeroSection = () => {
           src="/aitontech.com-webp.webp"
           className="opacity-40"
         />
-        {/* Overlays for better readability and aesthetic */}
+        {/* Overlays ar not good enough for better readability and aesthetic */}
         <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/10 to-background" />
         <div className="absolute inset-0 bg-background/30 backdrop-blur-[2px]" />
         <div className="absolute inset-0 circle-pattern opacity-40" />
@@ -53,13 +53,13 @@ const HeroSection = () => {
             </div>
 
             <h1 className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-[1.1] text-foreground tracking-tight">
-              Design <span className="text-gradient">Driven</span>
+              Grow Your <span className="text-gradient">Business</span>
               <br />
-              Innovation
+              Online in Juba
             </h1>
 
             <p className="text-muted-foreground text-base sm:text-xl max-w-xl leading-relaxed">
-              We weave digital narratives through cutting-edge code and visionary design. Transforming ideas into immersive web experiences.
+              Aiton Tech helps small businesses in South Sudan increase their online presence and marketability. Professional software development and digital marketing solutions tailored for your growth.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
@@ -142,13 +142,13 @@ const HeroSection = () => {
           </div>
         </div>
 
-        {/* Bottom Scrolling Stats */}
+          {/* Bottom Scrolling Stats */}
         <div className="mt-20 sm:mt-32 pt-10 border-t border-white/5 animate-fade-up" style={{ animationDelay: '0.5s' }}>
           <div className="flex flex-wrap justify-center lg:justify-between gap-8 sm:gap-12">
             {[
-              { label: 'Innovation Rate', value: '84%' },
-              { label: 'Successful Projects', value: '10+' },
-              { label: 'Global Clients', value: '5+' },
+              { label: 'Success Rate', value: '98%' },
+              { label: 'Projects Delivered', value: '50+' },
+              { label: 'Happy Clients', value: '30+' },
             ].map((stat, i) => (
               <div key={i} className="text-center lg:text-left space-y-1">
                 <div className="text-2xl sm:text-4xl font-display font-bold text-foreground">{stat.value}</div>

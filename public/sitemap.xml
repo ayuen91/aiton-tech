@@ -1,9 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Homepage -->
   <url>
     <loc>https://aiton-tech.vercel.app/</loc>
-    <lastmod>2026-02-05</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-02-11</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://aiton-tech.vercel.app/ayuen-mamer-agoot.webp</image:loc>
+      <image:title>Ayuen Mamer Agoot - CEO of Aiton Tech</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://aiton-tech.vercel.app/favicon.ico</image:loc>
+      <image:title>Aiton Tech Logo</image:title>
+    </image:image>
   </url>
+
+  <!-- Services Section -->
+  <url>
+    <loc>https://aiton-tech.vercel.app/#services</loc>
+    <lastmod>2026-02-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Projects Section -->
+  <url>
+    <loc>https://aiton-tech.vercel.app/#projects</loc>
+    <lastmod>2026-02-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://aiton-tech.vercel.app/projects/jahir-us.webp</image:loc>
+      <image:title>Jahir Trade Guide - Portfolio Project</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://aiton-tech.vercel.app/projects/kuoiawan-vercel-app.webp</image:loc>
+      <image:title>Selector Kuoi Awan - Entertainment E-commerce</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://aiton-tech.vercel.app/projects/sagwanda-vercel-app.webp</image:loc>
+      <image:title>SA Gwanda Footwear - E-commerce Platform</image:title>
+    </image:image>
+  </url>
+
+  <!-- About Section -->
+  <url>
+    <loc>https://aiton-tech.vercel.app/#about</loc>
+    <lastmod>2026-02-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://aiton-tech.vercel.app/ayuen-mamer-agoot.webp</image:loc>
+      <image:title>Ayuen Mamer Agoot - Founder & CEO</image:title>
+    </image:image>
+  </url>
+
+  <!-- Contact Section -->
+  <url>
+    <loc>https://aiton-tech.vercel.app/#contact</loc>
+    <lastmod>2026-02-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
 </urlset>

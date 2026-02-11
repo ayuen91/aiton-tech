@@ -5,23 +5,23 @@ import { ReactNode } from 'react';
 const services = [
   {
     number: '.01',
-    title: 'Fullstack Systems',
-    description: 'Engineering resilient, scalable digital ecosystems using React, Node.js, and advanced cloud architectures.',
-    icon: Code2,
+    title: 'Web Development & E-commerce',
+    description: 'Custom websites and online stores that convert visitors into customers. Perfect for small businesses looking to establish or grow their online presence in South Sudan.',
+    icon: Globe,
     color: 'from-accent to-primary'
   },
   {
     number: '.02',
-    title: 'AI & Data Intelligence',
-    description: 'Integrating intelligent agents and predictive models using Python, training custom LLMs for enterprise automation.',
-    icon: Cpu,
+    title: 'Digital Marketing & SEO',
+    description: 'Strategic digital marketing and SEO optimization to help your business rank higher and reach more customers in Juba and across South Sudan.',
+    icon: Zap,
     color: 'from-primary to-purple-500'
   },
   {
     number: '.03',
-    title: 'Digital Experience',
-    description: 'Crafting ultra-premium, conversion-focused interfaces with high-end Framer Motion animations and glassmorphism.',
-    icon: Layout,
+    title: 'Business Solutions',
+    description: 'Tailored software solutions and automation tools designed to streamline operations and boost productivity for growing businesses.',
+    icon: Rocket,
     color: 'from-blue-500 to-accent'
   }
 ];
@@ -123,7 +123,7 @@ const ServicesSection = () => {
             viewport={{ once: true }}
             className="font-display text-4xl sm:text-6xl font-extrabold text-foreground mb-6"
           >
-            Digital <span className="bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">Powerhouse</span>
+            Services for <span className="bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">Business Growth</span>
           </motion.h2>
 
           <motion.p
@@ -132,7 +132,7 @@ const ServicesSection = () => {
             viewport={{ once: true }}
             className="text-muted-foreground max-w-2xl mx-auto text-base sm:text-lg font-medium"
           >
-            Bridging the gap between ambitious ideas and technical reality.
+            We help small businesses in Juba increase their online presence and marketability with proven digital strategies.
           </motion.p>
         </div>
 

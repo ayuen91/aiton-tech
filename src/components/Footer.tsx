@@ -50,10 +50,14 @@ const Footer = () => {
           variants={containerVariants}
           className="glass-heavy rounded-2xl sm:rounded-3xl p-6 sm:p-12 md:p-16 lg:p-20 max-w-5xl mx-auto text-center mb-8 sm:mb-16 shadow-2xl border border-white/10"
         >
-          <motion.span variants={itemVariants} className="section-number block mb-4 sm:mb-6 text-xs sm:text-sm font-bold tracking-[0.3em] text-accent">.05 GET IN TOUCH</motion.span>
+          <motion.span variants={itemVariants} className="section-number block mb-4 sm:mb-6 text-xs sm:text-sm font-bold tracking-[0.3em] text-accent">.05 READY TO GROW?</motion.span>
           <h2 className="font-display text-3xl sm:text-5xl md:text-6xl font-extrabold text-foreground mb-6 sm:mb-10">
-            Let's Build the <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent italic font-serif">Future</span> Together
+            Let's Grow Your <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent italic font-serif">Business</span> Online
           </h2>
+
+          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto mb-10 sm:mb-16">
+            Ready to increase your online presence and marketability? Contact Aiton Tech today and let's create digital solutions that drive real business growth.
+          </p>
 
           <div className="grid sm:grid-cols-3 gap-4 sm:gap-6 mb-10 sm:mb-16 max-w-4xl mx-auto">
             {contactInfo.map((info) => (
