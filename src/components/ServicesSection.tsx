@@ -14,14 +14,14 @@ const services: Service[] = [
   {
     number: '.01',
     title: 'Web Development & E-commerce',
-    description: 'Custom websites and online stores that convert visitors into customers. Perfect for small businesses looking to establish or grow their online presence in South Sudan.',
+    description: 'Custom websites and online stores that convert visitors into customers. Perfect for small businesses across East Africa looking to establish or grow their online presence.',
     icon: Globe,
     color: 'from-accent to-primary'
   },
   {
     number: '.02',
     title: 'Digital Marketing & SEO',
-    description: 'Strategic digital marketing and SEO optimization to help your business rank higher and reach more customers in Juba and across South Sudan.',
+    description: 'Strategic digital marketing and SEO optimization to help your business rank higher and reach more customers across East Africa and the region.',
     icon: Zap,
     color: 'from-primary to-purple-500'
   },

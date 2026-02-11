@@ -70,7 +70,7 @@ const HeroSection = () => {
             </h1>
 
             <p className="text-muted-foreground text-base sm:text-xl max-w-xl leading-relaxed">
-              Aiton Tech helps small businesses in South Sudan increase their online presence and marketability. Professional software development and digital marketing solutions tailored for your growth.
+              Aiton Tech helps small businesses across East Africa increase their online presence and marketability. Professional software development and digital marketing solutions tailored for your growth, serving South Sudan, Kenya, Uganda, Ethiopia, and beyond.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
