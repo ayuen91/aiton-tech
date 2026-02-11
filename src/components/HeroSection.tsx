@@ -6,10 +6,21 @@ import { motion, useMotionValue, useTransform, animate } from 'framer-motion';
 
 const HeroSection = () => {
   const [displayProgress, setDisplayProgress] = useState(0);
+  const [isAnimationActive, setIsAnimationActive] = useState(false);
   const count = useMotionValue(0);
   const rounded = useTransform(count, (latest) => Math.round(latest));
 
+  // Defer animation start until component is mounted and visible
   useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsAnimationActive(true);
+    }, 500); // Delay animation to let initial content paint first
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    if (!isAnimationActive) return;
+    
     const animation = animate(count, 84, {
       duration: 2,
       delay: 0.5,
@@ -17,7 +28,7 @@ const HeroSection = () => {
       onUpdate: (latest) => setDisplayProgress(Math.round(latest))
     });
     return animation.stop;
-  }, [count]);
+  }, [count, isAnimationActive]);
 
   // Calculate circular stroke
   const radius = 45;
